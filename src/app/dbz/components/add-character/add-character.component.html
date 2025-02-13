@@ -1,0 +1,25 @@
+<form (ngSubmit)="showCharacter()">
+    <h4>Add character</h4>
+    <input 
+    name="name"
+    [(ngModel)]="character.name"
+    type="text" 
+    class="form-control mb-2" 
+    placeholder="Name">
+
+    <input 
+    name="power"
+    [(ngModel)]="character.power"
+    type="number" 
+    class="form-control mb-2" 
+    placeholder="Power">
+
+    <button
+    type="submit" 
+    class="btn btn-primary"
+    >Add</button>
+
+    <p>
+        {{ character | json }}
+    </p>
+</form>
