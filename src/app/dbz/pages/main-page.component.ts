@@ -9,17 +9,28 @@ import { DbzService } from '../services/dbz.service';
 })
 
 export class MainPageComponent{
-    constructor(private dbzService: DbzService){}
+  constructor(private dbzService: DbzService){}
 
-    get characters(): Character[]{
-        return this.dbzService.characters;
+  get characters(): Character[]{
+      return this.dbzService.characters;
+  }
+
+  newCharacter(character: Character):void {
+      this.dbzService.newCharacter(character);
+  }
+
+  deleteCharacter(id: string): void{
+      this.dbzService.deleteCharacter(id);
+  }
+
+  buttonPress(): void{
+    const datos = {
+      numero: 9,
+      cadena: "holi"
     }
 
-    newCharacter(character: Character):void {
-        this.dbzService.newCharacter(character);
-    }
+    const event = new CustomEvent('eventoCustom', {detail: datos});
 
-    deleteCharacter(id: string): void{
-        this.dbzService.deleteCharacter(id);
-    }
+    window.parent.document.dispatchEvent(event);
+  }
 }
